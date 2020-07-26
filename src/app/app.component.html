@@ -1,0 +1,46 @@
+
+<div class="col-md-8 offset-2 mt-5">
+  <select type="number" [(ngModel)]="selected" (ngModelChange)="onSelect(selected)">
+    <option [ngValue]="userList" *ngFor="let userList of userList">{{userList}}</option>
+  </select>
+  <div class="mt-5 text-center"  *ngFor="let data of selectedData">
+  <table style="width:100%">
+    <tr>
+      <th class="w-20">ID</th>
+      <th class="w-20">Name</th>
+      <th class="w-20">Region/Country</th>
+      <th class="w-25">Start Time</th>
+      <th class="w-25">End Time</th>
+    </tr>
+    <tr>
+      <td>{{data.id}}</td>
+      <td>{{data.real_name}}</td>
+      <td>{{data.tz}}</td>
+      <td>
+      <tr *ngFor = "let data of data.activity_periods" >
+        {{data.start_time}}
+      </tr>
+    </td>
+    <td>
+      <tr *ngFor = "let data of data.activity_periods">
+        {{data.end_time}}
+      </tr>
+    </td>
+    </tr>
+
+  </table>
+
+</div>
+<div class="mt-5 text-center" *ngIf="selected === userList[0] ">
+  <table style="width:100%">
+    <tr>
+      <th class="w-20">ID</th>
+      <th class="w-20">Name</th>
+      <th class="w-20">Region/Country</th>
+      <th class="w-25">Start Time</th>
+      <th class="w-25">End Time</th>
+    </tr>
+ </table>
+ <span > Please Select User Name </span>
+</div>
+</div>
